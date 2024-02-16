@@ -7,6 +7,7 @@ const Home = () => {
     const signOut = () => {
         auth.signOut();
     };
+    console.log("========",user)
     return (
         <>
             <div onClick={signOut}>Home working</div>
