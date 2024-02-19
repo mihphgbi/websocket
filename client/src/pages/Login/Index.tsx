@@ -16,22 +16,20 @@ const Login = () => {
         <>
             <div className='login-wrapper'>
                 <div className='login-form'>
-                    <form>
-                        <div className='input-item'>
-                            <label>User Name: </label>
-                            <input type='text'></input>
-                        </div>
-                        <div className='input-item'>
-                            <label>Password: </label>
-                            <input type='password'></input>
-                        </div>
-                        <div className='submit-btn'>
-                            <button onClick={handleSubmit}>Login</button>
-                        </div>
-                        <div className='login-content'>
-                            <p>Sign in with <a onClick={googleSignIn}>Google</a></p>
-                        </div>
-                    </form>
+                    <div className='input-item'>
+                        <label>User Name: </label>
+                        <input type='text'></input>
+                    </div>
+                    <div className='input-item'>
+                        <label>Password: </label>
+                        <input type='password'></input>
+                    </div>
+                    <div className='submit-btn'>
+                        <button onClick={handleSubmit}>Login</button>
+                    </div>
+                    <div className='login-content'>
+                        <p>Sign in with <a onClick={googleSignIn}>Google</a></p>
+                    </div>
                 </div>
             </div>
         </>
