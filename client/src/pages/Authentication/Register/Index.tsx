@@ -1,23 +1,21 @@
 import React, {useState} from "react";
-import './style/login.scss';
 import {useAuthState} from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-import { auth } from "../../firebase";
-import {signInWithAccount} from "../../action/auth";
+import { auth } from "../../../firebase";
+import {createAccount} from "../../../action/auth";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
     const [user] = useAuthState(auth);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const googleSignIn = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider);
-    };
+
     const handleSubmit = () => {
-        signInWithAccount(userName, password)(dispatch);
+        createAccount(userName, password)(dispatch);
+        navigate("/");
     }
 
     const handleChange = (event: any, type: string) => {
@@ -28,9 +26,7 @@ const Login = () => {
         }
     }
 
-    const createNewUser = () => {
-
-    }
+    const createNewUser = () => {navigate('/register')}
     return (
         <>
             <div className='login-wrapper'>
@@ -44,15 +40,11 @@ const Login = () => {
                         <input type='password' value={password} onChange={(e) => handleChange(e, 'password')}></input>
                     </div>
                     <div className='submit-btn'>
-                        <button onClick={handleSubmit}>Login</button>
-                    </div>
-                    <div className='login-content'>
-                        <p>Sign in with <a onClick={googleSignIn}>Google</a></p>
-                        <p>Don't have account? <a onClick={createNewUser}>Create one</a></p>
+                        <button onClick={handleSubmit}>Create an account</button>
                     </div>
                 </div>
             </div>
         </>
     )
 }
-export default Login
+export default Register
